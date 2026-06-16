@@ -7,8 +7,11 @@ RUN cat > test.sh <<EOF
 MY_NAME=`hostname`
 MY_LOG_FILE=/tmp/log/log.txt
 
-curl -s http://webapp:8000/random 2>&1 >> \$MY_LOG_FILE;
-
+while true; do
+  echo -n "\$MY_NAME ">>\$MY_LOG_FILE;
+  curl -s http://webapp:8000/random 2>&1 >> \$MY_LOG_FILE;
+  sleep 1;
+  done
 EOF
 RUN sed "s/\r$//" test.sh
 RUN chmod 755 test.sh
