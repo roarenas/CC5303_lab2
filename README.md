@@ -7,6 +7,22 @@ En este laboratorio utilizaremos un nuevo archivo llamado *docker-compose.yaml*,
 
 El conjunto de servicios y recursos que componen este proyecto se le denomina *compose* (componer en español).
 
+## Paso 0
+
+- [ ] Crear el archivo *docker-compose.yaml*
+- [ ] Crear en el directorio local la carpeta log y el archivo log.txt
+```bash
+mkdir log
+touch log/log.txt
+```
+- [ ] Ejecutar *docker compose build*
+- [ ] Ejecutar *docker compose up*
+> [!Observe] La ejecución de los contenedores no posee un orden por defecto
+- [ ] Revisar el contenido del archivo log.txt
+```bash
+cat log/log.txt
+```
+
 ## Comandos utiles
 
 ### Comandos nuevos
