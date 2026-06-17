@@ -4,8 +4,12 @@ RUN apk update
 RUN apk add curl bind-tools
 RUN cat > test.sh <<EOF
 #!/bin/sh
-MY_NAME=`hostname`
-MY_LOG_FILE=/tmp/log/log.txt
+MY_NAME=\`hostname\`
+MY_LOG_FILE=/tmp/log/log.pipe
+
+if [ ! -p \$MY_LOG_FILE ]; then
+  mkfifo \$MY_LOG_FILE
+fi
 
 while true; do
   echo -n "\$MY_NAME ">>\$MY_LOG_FILE;

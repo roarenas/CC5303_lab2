@@ -9,6 +9,7 @@ RUN chown nobody:nogroup /app
 
 COPY --chown=nobody:nogroup lab1.py ./
 
+ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
 EXPOSE 8000
 

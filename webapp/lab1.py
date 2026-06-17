@@ -1,25 +1,39 @@
 from flask import Flask, request, jsonify
-import random
 import os
+import time
+import random
+import threading
 
 app = Flask(__name__)
+processing_lock = threading.Lock()
 
 @app.route("/random", methods=["GET"])
 def random_number():
-    # Read seed from query parameter
-    seed = request.args.get("seed", type=int)
+    if not processing_lock.acquire(blocking=False):
+        return jsonify({
+            "status": "rejected",
+            "message": "System busy"
+            }), 429
+    try:
+        # Read seed from query parameter
+        seed = request.args.get("seed", type=int)
 
-    # Create RNG with seed
-    rng = random.Random(seed)
+        # Create RNG with seed
+        rng = random.Random(seed)
 
-    # Generate random number
-    number = rng.randint(1, 100)
-    #number = int(rng.integers(1, 101))
+        # Generate random number
+        number = rng.randint(1, 100)
+        #number = int(rng.integers(1, 101))
 
-    return jsonify({
-        "seed": seed,
-        "random_number": number
-    })
+        time.sleep(5)
+
+        return jsonify({
+            "status": "ok",
+            "message": number
+        })
+
+    finally:
+        processing_lock.release()
 
 if __name__ == "__main__":
     # Use PORT env variable if available, otherwise default to 5000
