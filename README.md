@@ -3,6 +3,6 @@ En el siguiente laboratorio partiremos con base al __laboratirio 1__, la idea en
 
 Las distintas etapas del laboratorio estan definidas mediante el _tag_ y una breve descripción de la etapa.
 
-__f6b25a1__ Inicio del laboratorio
-__616cf2c__ La app client espera a que el servicio webapp este arriba correctamente. Ademas client deja registro en /tmp/log/log.txt
-__7b289fe__ Modificamos el servidor para que atienda solo a 1 cliente a la vez, ademas cambiamos el registro de los logs a /tmp/log/log.pipe, para evitar el crecimiento de los archivos.
+__f6b25a1__ Inicio del laboratorio\
+__616cf2c__ La app client espera a que el servicio webapp este arriba correctamente. Ademas client deja registro en /tmp/log/log.txt\
+__7b289fe__ Modificamos el servidor para que atienda solo a 1 cliente a la vez, ademas cambiamos el registro de los logs a /tmp/log/log.pipe, para evitar el crecimiento de los archivos.\
